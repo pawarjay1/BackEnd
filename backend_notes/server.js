@@ -6,6 +6,13 @@ const fs = require('fs');
 // middleware plug-in (body parser)
 app.use(express.urlencoded({extended: false})); 
 
+app.use((req,res,next)=>{
+    console.log("hello from middleware 1"); 
+    // return res.json({msg : "hello from m1"}); 
+    next(); 
+})
+
+
 
 // mock data for crud operation.
 const users = require('./MOCK_DATA.json');
@@ -16,7 +23,6 @@ const users = require('./MOCK_DATA.json');
 app.get("/user", (req, res) => {
     res.json(users);
 });
-
 
 // grouping the routes if the route is similar 
 app
@@ -41,7 +47,7 @@ app
 
 // create new User
 app.post("/user", (req, res) => {
-    const body = req.body; 
+    const body = req.body; // we need to pass body-parser for it. 
     users.push({...body, id : users.length+1}); 
     fs.writeFile("./MOCK_DATA.json",JSON.stringify(users), (err,data)=>{
         return res.json({ status: "success", id : users.length+1 });
@@ -54,3 +60,6 @@ app.post("/user", (req, res) => {
 app.listen(3000, () => {
     console.log("server is running");
 }); 
+
+
+ 
