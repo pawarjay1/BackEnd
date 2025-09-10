@@ -15,13 +15,11 @@ router.post('/', async(req, res) => {
     const response = await newPerson.save();
     console.log("response saved");
     res.status(200).json(response);
-
   }catch(err) {
     console.log(err);
     res.status(500).json({ error: "internal server error" });
   }
 });
-
 
 router.get('/', async(req, res) => {
   try {
@@ -33,7 +31,6 @@ router.get('/', async(req, res) => {
     res.status(500).json({ error: "internal server error" });
   }
 });
-
 
 // get the person work type 
 router.get('/:workType', async(req, res) => {
@@ -51,7 +48,6 @@ router.get('/:workType', async(req, res) => {
     res.status(500).json({ error: "internal server error" });
   }
 });
-
 
 // update person data 
 router.put('/:id',async (req,res)=>{
@@ -75,7 +71,6 @@ router.put('/:id',async (req,res)=>{
         res.status(500).json({error : "internal server error"}); 
     }
 });
-
 
 // Delete person Data 
 router.delete('/:id', async (req,res)=> {

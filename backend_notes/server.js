@@ -1,65 +1,32 @@
 const express = require('express');
 const app = express();
 
-const fs = require('fs'); 
+// db connection 
+const db = require('./config/db');
+const mongoose = require('mongoose');
+
+
+// routes
+const userRouter = require('./routes/user');
+
+// env file 
+require('dotenv').config();
+ 
+
+const fs = require('fs');
 
 // middleware plug-in (body parser)
-app.use(express.urlencoded({extended: false})); 
+app.use(express.json());
+app.use(express.urlencoded({ extended: false }));
 
-app.use((req,res,next)=>{
-    console.log("hello from middleware 1"); 
-    // return res.json({msg : "hello from m1"}); 
-    next(); 
-})
-
-
-
-// mock data for crud operation.
-const users = require('./MOCK_DATA.json');
 
 // Routes
-
-// List all users
-app.get("/user", (req, res) => {
-    res.json(users);
-});
-
-// grouping the routes if the route is similar 
-app
-    .route("/user/:id")
-    .get((req, res) => {  // :id is dynamic value 
-        // get the user with id 
-        const id = Number(req.params.id);
-        const user = users.find((user) => user.id === id);
-        console.log(res.json(user));
-    })
-    .patch((req, res) => {
-        // edit the user with id  
-        const id = Number(req.params.id);
-        return res.json({ status: "pending" });
-    })
-    .delete((req, res) => {
-        // delete the user with id  
-        const id = Number(req.params.id);
-        return res.json({ status: "pending" });
-    });
-
-
-// create new User
-app.post("/user", (req, res) => {
-    const body = req.body; // we need to pass body-parser for it. 
-    users.push({...body, id : users.length+1}); 
-    fs.writeFile("./MOCK_DATA.json",JSON.stringify(users), (err,data)=>{
-        return res.json({ status: "success", id : users.length+1 });
-    }); 
-});
-
+app.use("/user", userRouter); 
 
 
 // LISTEN THE PORT 
-app.listen(3000, () => {
+app.listen(process.env.PORT, () => {
     console.log("server is running");
-}); 
+});
 
 
- 

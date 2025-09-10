@@ -6,6 +6,14 @@
 // 2. npm i express 
 
 
+// how to connect mongo with nodejs 
+// 1. npm intall mongoose
+// 2. add mongoose in server file using require()
+
+// how mongoose works 
+// schema - define the structure 
+//      schema - model 
+//      using this model we do crud operations 
 
 
 
@@ -36,3 +44,10 @@
 // what is JWT token and how to authenticate 
 
 
+
+
+
+// authentication , authorization 
+// session, cookie , token 
+// jwt token 
+// payment gatways 
