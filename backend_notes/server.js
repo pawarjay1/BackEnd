@@ -20,8 +20,13 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: false }));
 
 
+
 // Routes
 app.use("/user", userRouter); 
+
+app.use("/", (req,res)=>{
+    res.end("Welcome page!"); 
+})
 
 
 // LISTEN THE PORT 

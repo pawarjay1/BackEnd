@@ -12,14 +12,14 @@ router.get("/", async(req, res) => {
     <ul> 
         ${AllUser.map((user)=> `<li> ${user.first_name} - ${user.email}</li>`).join("")} 
     </ul>
-    `
+    `;
     return res.send(html); 
 });
 
 // grouping the routes if the route is similar 
 router
     .route("/:id")
-    .get(async(req, res) => {  // :id is dynamic value 
+    .get(async (req, res)=>{  // :id is dynamic value 
         const find_user = await user.findById(req.params.id); 
 
         if(!find_user){
