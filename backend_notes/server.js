@@ -17,7 +17,7 @@ const fs = require('fs');
 
 // middleware plug-in (body parser)
 app.use(express.json());
-app.use(express.urlencoded({ extended: false }));
+app.use(express.urlencoded({ extended: true }));
 
 
 

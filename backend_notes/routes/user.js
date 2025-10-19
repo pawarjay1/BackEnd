@@ -13,21 +13,24 @@ router.get("/", async(req, res) => {
         ${AllUser.map((user)=> `<li> ${user.first_name} - ${user.email}</li>`).join("")} 
     </ul>
     `;
+
+    const msg = req.query.msg; 
+    console.log(msg); 
     return res.send(html); 
 });
 
 // grouping the routes if the route is similar 
 router
     .route("/:id")
-    .get(async (req, res)=>{  // :id is dynamic value 
-        const find_user = await user.findById(req.params.id); 
+    // .get(async (req, res)=>{  // :id is dynamic value 
+    //     const find_user = await user.findById(req.params.id); 
 
-        if(!find_user){
-            return res.status(404).json({msg : "user is not found"}); 
-        }
+    //     if(!find_user){
+    //         return res.status(404).json({msg : "user is not found"}); 
+    //     }
 
-        return res.json(find_user); 
-    })
+    //     return res.json(find_user); 
+    // })
     .patch( async (req, res) => {
         // edit the user with id  
         const updateUser = await user.findByIdAndUpdate(req.params.id, {last_name : "chodu"}); 
@@ -38,6 +41,17 @@ router
         const remove = await user.findByIdAndDelete(req.params.id);
         return res.status(200).json({ status: "successfully deleted" });
     });
+
+//find user by its id 
+router.get("/:id", async(req, res)=>{
+    const find_user = await user.findById(req.params.id); 
+
+    if(!find_user){
+        return res.status(404).json({ status : "user is not found"}); 
+    }
+
+    return res.json(find_user); 
+})
 
 
 // create new User
