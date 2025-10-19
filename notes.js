@@ -51,3 +51,31 @@
 // session, cookie , token 
 // jwt token 
 // payment gatways 
+
+
+
+
+
+// --------------------------------- new tasks ----------------------------------------------------
+
+// create server with endPoints 
+
+// routes , controllers, models , middleware, how things saparetions the code and make clean 
+
+// how to connect database with nodejs 
+
+// how to create schema using model 
+
+// crud operation in mondoDB
+
+// make crud operation one project : blog page, where you can post data, read, update , delete
+
+// how to upload files in nodejs (using multer)
+
+// how to connect front-end with back-end (using axios) understanding the whole flow of mern project
+
+// authentication using jwt token (make a signup and login system)
+
+// authorization (role based access) 
+
+// socket.io (for real time response)
