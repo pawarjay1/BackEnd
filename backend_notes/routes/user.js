@@ -1,23 +1,14 @@
 const express = require('express');
 const user = require('../models/userSchema');
 
+const userRoute = require('../controllers/userRoute'); 
+
 const router = express.Router();
 
 // Routes
 
 // List all users
-router.get("/", async(req, res) => {
-    const AllUser = await user.find({}); 
-    const html = `
-    <ul> 
-        ${AllUser.map((user)=> `<li> ${user.first_name} - ${user.email}</li>`).join("")} 
-    </ul>
-    `;
-
-    const msg = req.query.msg; 
-    console.log(msg); 
-    return res.send(html); 
-});
+router.get("/", userRoute.getUsers);
 
 // grouping the routes if the route is similar 
 router
@@ -79,6 +70,5 @@ router.post("/", async (req, res) => {
         res.status(500).json({ error: err.message });
     }
 });
-
 
 module.exports = router; 
