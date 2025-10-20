@@ -58,7 +58,7 @@
 
 // --------------------------------- new tasks ----------------------------------------------------
 
-// create server with endPoints 
+// --create server with endPoints 
 
 // routes , controllers, models , middleware, how things saparetions the code and make clean 
 
@@ -66,13 +66,14 @@
 
 // how to create schema using model 
 
-// crud operation in mondoDB
+// crud operation in mongoDB
 
 // make crud operation one project : blog page, where you can post data, read, update , delete
 
 // how to upload files in nodejs (using multer)
 
-// how to connect front-end with back-end (using axios) understanding the whole flow of mern project
+// how to connect front-end with back-end (using axios or fetch) understanding the whole flow of mern project
+// display msg from backend to frontend page
 
 // authentication using jwt token (make a signup and login system)
 
